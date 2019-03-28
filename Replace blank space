@@ -1,0 +1,34 @@
+package test01;
+
+public class mytest01 {
+	public static void replaceab(char[] data , int length ) {
+		int newlength = length;
+		for(int i=0; i<=length-1;i++) {
+			if(data[i] == ' ')
+				newlength+=2;
+		}
+		for(int newloc= newlength-1,oldloc= length-1;newloc!=oldloc&&oldloc>0;newloc--,oldloc--) {
+			if (data[oldloc]==' ') {
+				data[newloc--]= '0';
+				data[newloc--]= '2';
+				data[newloc]= '%';
+			}	
+			else{
+					data[newloc]=data[oldloc];
+				}
+			}
+		
+		}
+	public static void main(String[] arg) {
+		char[] data1 = "it is a dog".toCharArray();
+		char[] data2 = new char[20];
+		for(int i= 0;i<data1.length;i++) {
+			data2[i]= data1[i];
+		}
+		replaceab(data2, 11);
+		System.out.println(data2);
+		
+	}
+	
+
+}
