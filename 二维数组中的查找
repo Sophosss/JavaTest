@@ -1,0 +1,28 @@
+package test01;
+
+public class mytest02 {
+	public static boolean search_num(int[][]arr,int temp) {
+		boolean found = false;
+		int row = 0;
+		int col = arr[0].length-1;
+		while(row < arr.length && col >= 0) {
+			if (temp == arr[row][col]) {
+				found = true;
+				break;
+				
+			}
+			else if(temp < arr[row][col]){
+				col--;
+			}
+			else {
+				row++;
+			}
+		}
+		return found;
+	}
+	public static void main(String []args) {
+		int [][] arr = {{1,2,8,9},{2,4,9,12},{4,7,10,13},{6,8,11,15}};
+		System.out.println(search_num(arr, 1));
+	}
+
+}
