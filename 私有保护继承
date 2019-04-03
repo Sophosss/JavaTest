@@ -1,0 +1,14 @@
+package test001;
+class A{
+	public int a = 1;
+}
+class B extends A{
+	private int a =2; //protected的话，11行输出2。
+}
+public class C{
+	public static void main(String [] args){
+		B b = new B();
+//	    System.out.println(b.a); 
+		System.out.println(((A)b).a);
+	}
+}
