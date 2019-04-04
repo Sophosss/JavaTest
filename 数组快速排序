@@ -33,7 +33,7 @@ public class quicksort {
 		return left;
 	}
 	public static void test() {
-		int[] data= {3,7,2,4,6,1};
+		int[] data= {6,1,2,7,9,3,4,5,10,8};
 		quicksort0(data);
 		System.out.print("数组快速排序：");
         for(int item: data){
