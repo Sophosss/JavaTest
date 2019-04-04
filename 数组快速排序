@@ -1,0 +1,46 @@
+package test001;
+
+public class quicksort {
+	public static void quicksort0(int []data) {
+		if (data==null||data.length<2) 	
+			return;
+		quicksort1(data, 0, data.length-1);
+	}
+	public static void quicksort1(int[] data, int start, int end) {
+		if (end-start<1) return;
+		int index= quicksort2(data, start, end);
+		quicksort1(data, start, index-1);
+		quicksort1(data, index+1, end);
+	}
+	public static int quicksort2(int[] data, int start, int end) {
+		int left= start, right= end;
+		int temp= data[start];
+		while (left<right) {
+			while (left<right&&data[right]>=temp) {
+				right--;				
+			}
+			if (left<right) {
+				data[left]= data[right];
+			}
+			while (left<right&&data[left]<temp) {
+				left++;
+			}
+			if (left<right) {
+				data[right]= data[left];
+			}
+		}
+		data[left]= temp;
+		return left;
+	}
+	public static void test() {
+		int[] data= {3,7,2,4,6,1};
+		quicksort0(data);
+		System.out.print("数组快速排序：");
+        for(int item: data){
+            System.out.print(item);
+        }
+	}
+	public static void main(String[] args) {
+		test();
+	}
+}
