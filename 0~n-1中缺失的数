@@ -1,0 +1,30 @@
+package test001;
+
+public class qu53 {
+	public static int search0(int []data,int start, int end) {
+		if (data==null||data.length<1) 
+			return -1;
+		if (data[end]==end) {
+			return end+1;
+		}
+		while (start<end) {
+			int index= (start+end)/2;
+			int mid= data[index];
+			if (mid!=index) {
+				if (data[index-1]==index-1) {
+					return mid;
+				}
+				end= index-1;				
+			}
+			else {
+				start= index+1;
+			}
+		}
+		return start;
+	}
+	public static void main(String[] args) {
+		int []data= {0,1,2,3,4,5,6,7};
+		int aa= search0(data, 0, 7);
+		System.out.println(aa);
+	}
+}
