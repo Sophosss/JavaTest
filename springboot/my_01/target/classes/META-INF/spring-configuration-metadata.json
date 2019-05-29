@@ -1,0 +1,17 @@
+{
+  "groups": [
+    {
+      "name": "person",
+      "type": "my_01.bean.Person",
+      "sourceType": "my_01.bean.Person"
+    }
+  ],
+  "properties": [
+    {
+      "name": "person.name",
+      "type": "java.lang.String",
+      "sourceType": "my_01.bean.Person"
+    }
+  ],
+  "hints": []
+}
