@@ -1,6 +1,4 @@
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 class MyResourse{
@@ -47,26 +45,39 @@ class MyResourse{
 public class MyThreadTest {
 	public static void main(String[] args) throws Exception {
 		MyResourse myResourse = new MyResourse(new ArrayBlockingQueue<String>(5));
-		new Thread(()->{
-			System.out.println(Thread.currentThread().getName() + "开始生产");
-			try {
-				myResourse.MyProd();
-			} catch (Exception e) {
+		ExecutorService executorService = Executors.newFixedThreadPool(3);
+		try	{
+			executorService.execute(()->{
+				System.out.println(Thread.currentThread().getName() + "开始生产");
+				try {
+					myResourse.MyProd();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			});
+			executorService.execute(()->{
+				System.out.println(Thread.currentThread().getName() + "开始消费");
+				try {
+					myResourse.MyCosumer();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			});
+			executorService.execute(()->{
+				try { TimeUnit.SECONDS.sleep(5); } catch (InterruptedException e) { e.printStackTrace(); }
+				System.out.println(Thread.currentThread().getName() + "收工！");
+				try {
+					myResourse.stop();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			});
+			}catch (Exception e) {
 				e.printStackTrace();
-			}
-		},"prod").start();
-		new Thread(()->{
-			System.out.println(Thread.currentThread().getName() + "开始消费");
-			System.out.println();
-			System.out.println();
-			try {
-				myResourse.MyCosumer();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		},"consumer").start();
+			}finally{
 
-		try { TimeUnit.SECONDS.sleep(6); } catch (InterruptedException e) { e.printStackTrace(); }
-		myResourse.stop();
+			}
 	}
 }
+
+
