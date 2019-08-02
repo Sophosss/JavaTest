@@ -21,7 +21,7 @@ public class RotateImage {
 		}
 	}
 
-	//直接原矩阵修改
+	//直接原矩阵修改（顺时针）
 	public void rotate2(int[][] matrix) {
 		int n = matrix.length;
 		for (int i = 0; i < n/2; i++){
