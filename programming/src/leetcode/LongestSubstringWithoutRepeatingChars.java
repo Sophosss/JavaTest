@@ -1,6 +1,7 @@
 package leetcode;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class LongestSubstringWithoutRepeatingChars {
 	public int lengthOfLongestSubstring(String s) {
@@ -16,5 +17,21 @@ public class LongestSubstringWithoutRepeatingChars {
 			sum = Math.max(end - start + 1, sum);
 		}
 		return sum;
+	}
+
+	//写法2
+	public int lengthOfLongestSubstring2(String s) {
+		Map<Character, Integer> map2 = new HashMap<>();
+		int max = 0, start = 0, end = 0;
+		char[] chars = s.toCharArray();
+		for (char c : chars){
+			if (map2.containsKey(c)){
+				start = Math.max(start, map2.get(c));
+			}
+			map2.put(c, end+1);
+			max = Math.max(max, end - start + 1);
+			end++;
+		}
+		return max;
 	}
 }
