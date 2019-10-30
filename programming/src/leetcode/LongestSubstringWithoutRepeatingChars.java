@@ -34,4 +34,25 @@ public class LongestSubstringWithoutRepeatingChars {
 		}
 		return max;
 	}
+
+	//写法3（滑动窗口模板）
+	public int lengthOfLongestSubstring3(String s) {
+		int len = s.length();
+		Map<Character, Integer> window = new HashMap<>();
+		int left = 0;
+		int right = 0;
+		int max = 0;
+		while(right < s.length()){
+			char c1 = s.charAt(right);
+			window.put(c1, window.getOrDefault(c1, 0) + 1);
+			right++;
+			while(window.get(c1) > 1){
+				char c2 = s.charAt(left);
+				window.put(c2, window.get(c2) - 1);
+				left++;
+			}
+			max = Math.max(max, right - left);
+		}
+		return max;
+	}
 }
