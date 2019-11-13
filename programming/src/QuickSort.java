@@ -1,58 +1,40 @@
-import java.util.Scanner;
-
-public class QuickSort {
-	public static void quicksort(int[] array) {
-		if (array == null || array.length < 2) {
-			return;
-		} else {
-			quicksort2(array, 0, array.length - 1);
-		}
+import java.util.Arrays;
+class Untitled {
+	public static void main(String[] args) {
+		int[] nums = new int[]{6,4,5,8,8,9,6,4,6};
+		t(nums);
+		System.out.println(Arrays.toString(nums));
 	}
 
-	public static void quicksort2(int[] array, int i, int j) {
-		if (j - i < 1) {
-			return;
-		}
-		int index = quicksort3(array, i, j);
-		quicksort2(array, i, index - 1);
-		quicksort2(array, index + 1, j);
+	public static void t(int []nums){
+		if(nums == null || nums.length < 2) return;
+		t(nums, 0, nums.length - 1);
 	}
 
-	public static int quicksort3(int[] array, int i, int j) {
-		int start = i, end = j;
-		int temp = array[start];
-		while (start < end) {
-			while (start < end && array[end] >= temp) {
-				end--;
-			}
-			if (start < end) {
-				array[start] = array[end];
-			}
-			while (start < end && array[start] < temp) {
-				start++;
-			}
-			if (start < end) {
-				array[end] = array[start];
-			}
+	public static void t(int []nums, int l, int r){
+		if(l == r) return;
+		int index = s(nums, l, r);
+		t(nums, l, index);
+		t(nums, index + 1, r);
+	}
+
+	public static int s(int []nums, int l, int r){
+		int start = l;
+		int end = r;
+		int temp = nums[start];
+		while(start < end){
+			while(start < end && nums[end] >= temp ) end--;
+			swap(nums, start, end);
+			while(start < end && nums[start] <= temp ) start++;
+			swap(nums, start, end);
 		}
-		array[start] = temp;
+		nums[start] = temp;
 		return start;
 	}
 
-	public static void test() {
-		Scanner scanner = new Scanner(System.in);
-		int n = scanner.nextInt();
-		int [] data = new int [n];
-		for (int item : data){
-			data[item] = scanner.nextInt();
-		}
-		quicksort(data);
-		for (int item : data) {
-			System.out.print(item);
-		}
-	}
-
-	public static void main(String[] args) {
-		test();
+	private static void swap(int [] nums, int i, int j) {
+		int temp = nums [i];
+		nums [i] = nums [j];
+		nums [j] = temp;
 	}
 }
