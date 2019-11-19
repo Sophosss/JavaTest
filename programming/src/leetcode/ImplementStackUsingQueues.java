@@ -6,7 +6,7 @@ import java.util.Queue;
 public class ImplementStackUsingQueues {
 	Queue<Integer> queue1;
 	Queue<Integer> queue2;
-	public MyStack() {
+	public ImplementStackUsingQueues() {
 		queue1 = new LinkedList<>();
 		queue2 = new LinkedList<>();
 	}
