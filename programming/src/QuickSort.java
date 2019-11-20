@@ -1,7 +1,7 @@
 import java.util.Arrays;
 class Untitled {
 	public static void main(String[] args) {
-		int[] nums = new int[]{6,4,5,8,8,9,6,4,6};
+		int[] nums = new int[]{5,3,2,1};
 		t(nums);
 		System.out.println(Arrays.toString(nums));
 	}
@@ -12,9 +12,9 @@ class Untitled {
 	}
 
 	public static void t(int []nums, int l, int r){
-		if(l == r) return;
+		if(r - l < 1) return;
 		int index = s(nums, l, r);
-		t(nums, l, index);
+		t(nums, l, index - 1);
 		t(nums, index + 1, r);
 	}
 
