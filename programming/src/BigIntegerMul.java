@@ -29,9 +29,9 @@ public class BigIntegerMul {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(multiply("5123123", "12123123"));
-		BigInteger b1 = new BigInteger("5123123");
-		BigInteger b2 = new BigInteger("12123123");
+		System.out.println(multiply("65", "27"));
+		BigInteger b1 = new BigInteger("65");
+		BigInteger b2 = new BigInteger("27");
 		System.out.println(b1.multiply(b2));
 	}
 }

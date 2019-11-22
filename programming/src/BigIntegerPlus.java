@@ -1,3 +1,5 @@
+import java.math.BigInteger;
+
 public class BigIntegerPlus {
 	public static String go(String s1, String s2){
 		char[] c1 = new StringBuilder(s1).reverse().toString().toCharArray();
@@ -11,7 +13,7 @@ public class BigIntegerPlus {
 		}
 		for (int i = 0; i < nums.length; i++) {
 			if(nums[i] > 10){
-				nums[i+1] += 1;
+				nums[i+1] += nums[i] / 10;
 				nums[i] %= 10;
 			}
 		}
@@ -26,6 +28,9 @@ public class BigIntegerPlus {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(go("123123", "111111"));
+		System.out.println(go("1233213213", "1231123123"));
+		BigInteger b1 = new BigInteger("1233213213");
+		BigInteger b2 = new BigInteger("1231123123");
+		System.out.println(b1.add(b2));
 	}
 }
