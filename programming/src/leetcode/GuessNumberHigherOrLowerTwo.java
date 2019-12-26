@@ -14,6 +14,6 @@ public class GuessNumberHigherOrLowerTwo {
 				}
 			}
 		}
-		return dp[1][n];375. 猜数字大小 II
+		return dp[1][n];
 	}
 }
